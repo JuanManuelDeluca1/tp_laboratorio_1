@@ -1,7 +1,0 @@
-12:56:20 **** Rebuild of configuration Debug for project prueba ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\prueba.o" "..\\src\\prueba.c" 
-gcc -o prueba.exe "src\\prueba.o" 
-
-12:56:21 Build Finished. 0 errors, 0 warnings. (took 861ms)
-
