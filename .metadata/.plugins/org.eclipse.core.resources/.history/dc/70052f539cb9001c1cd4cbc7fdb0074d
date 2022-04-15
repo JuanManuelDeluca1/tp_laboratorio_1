@@ -1,0 +1,36 @@
+/*
+ ============================================================================
+ Name        : vectores.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 5
+
+int main(void)
+{
+	setbuf(stdout,NULL);
+	int i;
+	int numeros[TAM];
+	int suma;
+	int falg=0
+	for(i = 0; i<TAM; i++)
+	{
+		printf("ingrese un numero:");
+		scanf("%d", &numeros[i]);
+		;
+	}
+	for(i=0; i<TAM; i++)
+	{
+		suma = numeros[TAM];
+		if()
+	}
+	printf("suma es igual: %d\n", suma);
+
+	return 0;
+}
