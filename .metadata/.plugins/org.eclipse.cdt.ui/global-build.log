@@ -1,8 +1,44 @@
-12:08:01 **** Incremental Build of configuration Debug for project funcionesMias ****
+15:36:58 **** Incremental Build of configuration Debug for project TP[2] ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\funcionesMias.o" "..\\src\\funcionesMias.c" 
-..\src\funcionesMias.c: In function 'main':
-..\src\funcionesMias.c:18:7: warning: variable 'xy' set but not used [-Wunused-but-set-variable]
-   18 |  char xy[TAM];
-      |       ^~
-gcc -o funcionesMias.exe "src\\funcionesMias.o" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayPassenger.o" "..\\src\\ArrayPassenger.c" 
+..\src\ArrayPassenger.c: In function 'modificarPasajeroPorID':
+..\src\ArrayPassenger.c:260:41: warning: comparison of constant '3' with boolean expression is always false [-Wbool-compare]
+  260 |          while(!vec[indice].estadoVuelo > 3 || !vec[indice].estadoVuelo < 0)
+      |                                         ^
+..\src\ArrayPassenger.c:260:41: warning: logical not is only applied to the left hand side of comparison [-Wlogical-not-parentheses]
+..\src\ArrayPassenger.c:260:16: note: add parentheses around left hand side expression to silence this warning
+  260 |          while(!vec[indice].estadoVuelo > 3 || !vec[indice].estadoVuelo < 0)
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                (                       )
+..\src\ArrayPassenger.c:260:73: warning: comparison of constant '0' with boolean expression is always false [-Wbool-compare]
+  260 |          while(!vec[indice].estadoVuelo > 3 || !vec[indice].estadoVuelo < 0)
+      |                                                                         ^
+..\src\ArrayPassenger.c:260:73: warning: logical not is only applied to the left hand side of comparison [-Wlogical-not-parentheses]
+..\src\ArrayPassenger.c:260:48: note: add parentheses around left hand side expression to silence this warning
+  260 |          while(!vec[indice].estadoVuelo > 3 || !vec[indice].estadoVuelo < 0)
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                (                       )
+gcc -o TP[2].exe "src\\ArrayPassenger.o" "src\\TP[2].o" "src\\menu.o" 
+15:37:49 **** Incremental Build of configuration Debug for project TP[2] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayPassenger.o" "..\\src\\ArrayPassenger.c" 
+gcc -o TP[2].exe "src\\ArrayPassenger.o" "src\\TP[2].o" "src\\menu.o" 
+Info: Nothing to build for TP[2]
+15:46:40 **** Incremental Build of configuration Debug for project TP[2] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayPassenger.o" "..\\src\\ArrayPassenger.c" 
+gcc -o TP[2].exe "src\\ArrayPassenger.o" "src\\TP[2].o" "src\\menu.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file TP[2].exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+15:47:38 **** Incremental Build of configuration Debug for project TP[2] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayPassenger.o" "..\\src\\ArrayPassenger.c" 
+gcc -o TP[2].exe "src\\ArrayPassenger.o" "src\\TP[2].o" "src\\menu.o" 
+15:48:19 **** Incremental Build of configuration Debug for project TP[2] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayPassenger.o" "..\\src\\ArrayPassenger.c" 
+gcc -o TP[2].exe "src\\ArrayPassenger.o" "src\\TP[2].o" "src\\menu.o" 
+15:49:42 **** Incremental Build of configuration Debug for project TP[2] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ArrayPassenger.o" "..\\src\\ArrayPassenger.c" 
+gcc -o TP[2].exe "src\\ArrayPassenger.o" "src\\TP[2].o" "src\\menu.o" 

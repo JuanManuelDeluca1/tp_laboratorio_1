@@ -17,6 +17,10 @@ int main(void)
 	int x;
 	printf("ingrese un numero: ");
 	scanf("%d", &x);
-	printf("su numero es %d:", x);
+	while(x > 10 || x < 0)
+	{
+		printf("ingrese un numero: ");
+			scanf("%d", &x);
+	}
 	return 0;
 }

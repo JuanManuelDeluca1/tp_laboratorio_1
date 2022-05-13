@@ -1,11 +1,15 @@
-12:08:01 **** Incremental Build of configuration Debug for project funcionesMias ****
+18:26:46 **** Rebuild of configuration Debug for project funcionesMias ****
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\funcionesMias.o" "..\\src\\funcionesMias.c" 
-..\src\funcionesMias.c: In function 'main':
-..\src\funcionesMias.c:18:7: warning: variable 'xy' set but not used [-Wunused-but-set-variable]
-   18 |  char xy[TAM];
-      |       ^~
+..\src\funcionesMias.c: In function 'esVocal':
+..\src\funcionesMias.c:23:6: warning: implicit declaration of function 'tolower' [-Wimplicit-function-declaration]
+   23 |  x = tolower(x);
+      |      ^~~~~~~
+..\src\funcionesMias.c: In function 'pasarAMyusculas':
+..\src\funcionesMias.c:121:13: warning: implicit declaration of function 'toupper' [-Wimplicit-function-declaration]
+  121 |    vec[i] = toupper(vec[i]);
+      |             ^~~~~~~
 gcc -o funcionesMias.exe "src\\funcionesMias.o" 
 
-12:08:01 Build Finished. 0 errors, 1 warnings. (took 778ms)
+18:26:47 Build Finished. 0 errors, 2 warnings. (took 960ms)
 
