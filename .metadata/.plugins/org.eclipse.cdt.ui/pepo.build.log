@@ -1,7 +1,0 @@
-17:35:01 **** Incremental Build of configuration Debug for project pepo ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\pepo.o" "..\\src\\pepo.c" 
-gcc -o pepo.exe "src\\pepo.o" 
-
-17:35:02 Build Finished. 0 errors, 0 warnings. (took 718ms)
-

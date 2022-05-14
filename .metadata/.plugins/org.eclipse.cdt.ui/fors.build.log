@@ -1,7 +1,0 @@
-18:26:45 **** Rebuild of configuration Debug for project fors ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\fors.o" "..\\src\\fors.c" 
-gcc -o fors.exe "src\\fors.o" 
-
-18:26:46 Build Finished. 0 errors, 0 warnings. (took 630ms)
-
