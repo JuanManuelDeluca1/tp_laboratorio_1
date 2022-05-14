@@ -1,0 +1,18 @@
+/*
+ * Vuelos.h
+ *
+ *  Created on: 11 may. 2022
+ *      Author: juanm
+ */
+
+#ifndef VUELOS_H_
+#define VUELOS_H_
+
+
+
+#endif /* VUELOS_H_ */
+
+int listarDestino(eDestino aerolineas[], int tam);
+int cargarDescripcionDestino(eDestino aerolineas[], int tam, int id, char descripcion[]);
+int buscarDestino(eDestino aerolineas[], int tam, int id, int* pIndice);
+int validarDestino(eDestino aerolineas[], int tam, int id);

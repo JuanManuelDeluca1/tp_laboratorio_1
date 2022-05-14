@@ -1,0 +1,102 @@
+/*
+ ============================================================================
+ Name        : simulacro.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "menu.h"
+#include "fecha.h"
+#include "marca.h"
+#include "color.h"
+#include "auto.h"
+#include "servicio.h"
+#include "trabajo.h"
+
+#define TAMM 5
+#define TAMC 5
+#define TAML 4
+
+int main(void)
+{
+	setbuf(stdout,NULL);
+	char salir;
+	eMarcas marcas[TAMM] =
+	{
+		{1000, "Renault"},
+		{1001, "Ford"},
+        {1002, "Chevrolet"},
+	    {1003, "Fiat"},
+	    {1004, "Peugeot"}
+
+	};
+	eColores colores[TAMC] =
+	{
+		{1000, "Negro"},
+		{1001, "Blanco"},
+	    {1002, "Rojo"},
+		{1003, "Gris"},
+		{1004, "Azul"}
+
+	};
+	eColores colores[TAMC] =
+		{
+			{1000, "Negro"},
+			{1001, "Blanco"},
+		    {1002, "Rojo"},
+			{1003, "Gris"},
+			{1004, "Azul"}
+
+		};
+	do
+	{
+		switch(menu())
+		{
+		case 1:
+			 printf("1- Alta auto\n");
+
+     	break;
+		case 2:
+			 printf("2- Modificar alta\n");
+
+		break;
+		case 3:
+			  printf("3- Bajar auto\n");
+
+		break;
+		case 4:
+			 printf("4- listar autos\n");
+		break;
+		case 5:
+	        printf("5- liatar marcas\n");
+		break;
+		case 6:
+			 printf("6- listar colores\n");
+		break;
+		case 7:
+			  printf("7- listar servicios\n");
+		break;
+		case 81:
+			printf("8- alta trabajp\n");
+		break;
+		case 9:
+			 printf("9- listar trabajo\n");
+		break;
+		case 10:
+			confirmarSalida(&salir);
+		break;
+		default:
+		     printf("Opcion Invalida!\n\n");
+		}
+	system("pause");
+
+	}while(salir != 's');
+
+	return 0;
+}

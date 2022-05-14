@@ -1,0 +1,11 @@
+/*
+ * menu.c
+ *
+ *  Created on: 11 may. 2022
+ *      Author: juanm
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include "menu.h"
+
+

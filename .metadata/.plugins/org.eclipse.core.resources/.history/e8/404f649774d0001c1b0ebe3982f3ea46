@@ -1,0 +1,20 @@
+/*
+ * auto.h
+ *
+ *  Created on: 9 may. 2022
+ *      Author: juanm
+ */
+
+#ifndef AUTO_H_
+#define AUTO_H_
+
+typedef struct{
+
+    int id;
+    int idMarca;
+    int idColor;
+    char caja[20];
+
+}eAuto;
+
+#endif /* AUTO_H_ */

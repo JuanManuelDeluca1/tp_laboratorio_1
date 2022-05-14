@@ -1,0 +1,7 @@
+18:26:47 **** Rebuild of configuration Debug for project menu ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu.o" "..\\src\\menu.c" 
+gcc -o menu.exe "src\\menu.o" 
+
+18:26:47 Build Finished. 0 errors, 0 warnings. (took 660ms)
+

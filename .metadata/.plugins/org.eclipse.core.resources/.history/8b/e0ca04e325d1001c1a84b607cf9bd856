@@ -1,0 +1,144 @@
+/*
+ ============================================================================
+ Name        : Parcial.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "menu.h"
+#include "Tipo.h"
+#include "Aerolinea.h"
+#include "Avion.h"
+
+#define TAMA 300
+
+int main(void)
+{
+	setbuf(stdout,NULL);
+	char salir;
+	int flagCarga = 0;
+	eAvion aviones[300];
+	do
+		{
+			switch(menu())
+			{
+				case 1:
+					if(flagCarga == 0)
+					{
+						inicializarAvion(aviones, TAMA);
+					}
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("no cagrgo");
+					}
+				break;
+				case 2:
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("debe cargar un pasajero primero\n\n");
+					}
+				break;
+				case 3:
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("debe cargar un pasajero primero\n\n");
+					}
+				break;
+				case 4:
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("debe cargar un pasajero primero\n\n");
+					}
+				break;
+				case 5:
+					if(flagCarga == 0)
+					{
+						printf("cagrgo");
+					}
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("problema al agregar pasajero\n");
+					}
+				break;
+				case 6:
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("debe cargar un pasajero primero\n\n");
+					}
+
+				break;
+				case 7:
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("debe cargar un pasajero primero\n\n");
+					}
+
+				break;
+				case 8:
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+			        {
+						printf("debe cargar un pasajero primero\n\n");
+					}
+
+				break;
+				case 9:
+					if(flagCarga == 1)
+					{
+						printf("cagrgo");
+					}
+					else
+					{
+						printf("debe cargar un pasajero primero\n\n");
+					}
+
+				break;
+				case 10:
+					confirmarSalida(&salir);
+				break;
+				default:
+					printf("opcion Invalida!\n\n");
+			}
+			system("pause");
+
+		}while(salir != 's');
+	return 0;
+}
+

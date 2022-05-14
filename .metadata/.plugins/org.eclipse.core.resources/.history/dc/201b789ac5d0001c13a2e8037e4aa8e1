@@ -1,0 +1,128 @@
+/*
+ * auto.c
+ *
+ *  Created on: 9 may. 2022
+ *      Author: juanm
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "marca.h"
+#include "color.h"
+#include "auto.h"
+
+int inicializarAuto(eAuto vec[], int tam)
+{
+    int todoOk = 0;
+    if(vec != NULL && tam > 0)
+    {
+        for(int i=0; i < tam; i++)
+        {
+            vec[i].isEmpty = 1;
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+
+
+
+int buscarAutoLibre(eAuto vec[], int tam, int* pIndex)
+{
+    int todoOk = 0;
+    if(vec != NULL && tam > 0 && pIndex != NULL)
+    {
+        *pIndex = -1;
+        for(int i=0; i < tam; i++)
+        {
+            if( vec[i].isEmpty )
+            {
+                *pIndex = i;
+                break;
+            }
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+}
+int altaAuto(eAuto vec[], int tam, int* pLegajo)
+{
+    int todoOk = 0;
+    int indice;
+    int auxMarca;
+    int auxColor;
+    char auxChar[20];
+    eAuto nuevoAuto;
+
+    if(vec != NULL && tam > 0 && pLegajo != NULL)
+    {
+        if( buscarAutoLibre(vec, tam, &indice) )
+        {
+
+            if(indice == - 1)
+            {
+                printf("No hay lugar en el sistema\n");
+            }
+            else
+            {
+                // aca caigo cuando haya lugar
+
+                if(mostrarColores(vec, tam))
+                {
+
+                  printf("Ingrese el id del color: ");
+                  fflush(stdin);
+                  scanf("%d", &auxColor);
+
+                  while(auxColor <= 5000 && auxColor >= 5004)
+                  {
+                      printf("No exite el id del color. Reingrese el id: ");
+                      scanf("%d", &auxColor);
+                  }
+                  nuevoAuto.idColor = auxColor;
+                }
+
+                if(mostrarMarcas(vec, tam))
+                {
+
+                  printf("Ingrese el id de la marca: ");
+                  fflush(stdin);
+                  scanf("%d", &auxMarca);
+
+                  while(auxMarca <= 1000 && auxMarca >= 1004)
+                  {
+                     printf("No exite el id de la marca. Reingrese el id: ");
+                     scanf("%d", &auxMarca);
+                  }
+                  nuevoAuto.idMarca = auxColor;
+                }
+
+                printf("Ingrese el id del tipo de caja: ");
+                fflush(stdin);
+                gets(auxChar);
+
+                while(strlen(auxChar) >= 20)
+                {
+                	printf("Nombre de la caja muy largo. Reingrese el Nombre: ");
+                	fflush(stdin);
+                    gets(auxChar);
+                }
+                strcpy(nuevoAuto.caja, auxChar);
+
+                nuevoAuto.isEmpty = 0;
+                nuevoAuto.id = *pLegajo;
+                *pLegajo = *pLegajo + 1;
+                vec[indice] = nuevoAuto;
+                todoOk = 1;
+            }
+        }
+        else
+        {
+            printf("Ocurrio un problema con los parametros\n");
+        }
+    }
+    return todoOk;
+}
+

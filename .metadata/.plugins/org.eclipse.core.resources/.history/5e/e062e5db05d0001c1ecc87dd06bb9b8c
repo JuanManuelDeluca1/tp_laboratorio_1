@@ -1,0 +1,19 @@
+/*
+ * auto.h
+ *
+ *  Created on: 9 may. 2022
+ *      Author: juanm
+ */
+
+#ifndef AUTO_H_
+#define AUTO_H_
+
+typedef struct{
+
+    int id;
+    char descripcion[20];
+    float precio;
+
+}eAuto;
+
+#endif /* AUTO_H_ */
