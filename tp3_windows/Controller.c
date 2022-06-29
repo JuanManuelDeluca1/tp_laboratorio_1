@@ -4,6 +4,7 @@
 
 #include "LinkedList.h"
 #include "Passenger.h"
+#include "parser.h"
 
 
 /** \brief Carga los datos de los pasajeros desde el archivo data.csv (modo texto).
@@ -15,16 +16,19 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 {
-	FILE* f = fopen("path", "r");
-	if(f == NULL && pArrayListPassenger == NULL)
+	FILE* f = fopen(path, "r");
+	Passenger* pasajero = NULL;
+	if(f != NULL && pArrayListPassenger != NULL)
 	{
-		printf("No se pudo abrir el archivo\n");
-		exit(1);
+		 pasajero = (Passenger*)parser_PassengerFromText(f, pArrayListPassenger);
+		 ll_add(pArrayListPassenger, pasajero);
 	}
 	else
 	{
-		fclose(f);
+		printf("No se encontro el archivo");
+		exit(1);
 	}
+
     return 1;
 }
 
@@ -37,16 +41,20 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
 {
-	FILE* f = fopen("path", "rb");
-	if(f == NULL && pArrayListPassenger == NULL)
-	{
-		printf("No se pudo abrir el archivo\n");
-		exit(1);
-	}
-	else
-	{
-		fclose(f);
-	}
+	FILE* f = fopen(path, "rb");
+	Passenger* pasajeroBinario = NULL;
+		if(f != NULL && pArrayListPassenger != NULL)
+		{
+			pasajeroBinario = parser_PassengerFromBinary(f, pArrayListPassenger);
+			ll_add(pArrayListPassenger, pasajeroBinario);
+		}
+		else
+		{
+			printf("No se encontro el archivo");
+			exit(1);
+		}
+
+	    return 1;
     return 1;
 }
 
@@ -57,85 +65,86 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
  * \return int
  *
  */
-int controller_addPassenger(LinkedList* pArrayListPassenger)
+int controller_addPassenger(LinkedList* pArrayListPassenger, int* pId)
 {
-	Passenger* newPassenger = NULL;
-
 	int todoOk = 0;
+	int id = 1001;
 	char nombre[50];
 	char apellido[50];
 	float precio;
-	int tipoPasajero;
+	int tipo;
 	char codigoVuelo[4];
-
-
-	if(pArrayListPassenger == NULL)
+	Passenger* newPassenger = NULL;
+	if(pArrayListPassenger != NULL)
 	{
-		printf("No se pudo conseguir memoria\n");
-		exit(1);
+		Passenger* newPassenger = Passenger_new();
+			if(newPassenger != NULL)
+			{
+				printf("Ingrese el nombre del pasajero:\n ");
+				fflush(stdin);
+			    gets(nombre);
+
+			    while(strlen(nombre) >= 51)
+			    {
+			    	printf("Nombre demasiado largo. Reingrese nombre:\n ");
+			    	fflush(stdin);
+					gets(nombre);
+			    }
+			    strcpy(newPassenger->nombre, nombre);
+
+				printf("Ingrese el apellido del pasajero:\n ");
+				fflush(stdin);
+				gets(apellido);
+
+				while(strlen(apellido) >= 51)
+				{
+					printf("Apellido demasiado largo. Reingrese Apellido:\n ");
+					fflush(stdin);
+					gets(apellido);
+				}
+
+				strcpy(newPassenger->apellido, apellido);
+
+				printf("Ingrese precio:\n ");
+				fflush(stdin);
+				scanf("%f", &precio);
+
+				newPassenger->precio = precio;
+
+				printf("Ingrese codigo del vuelo:\n ");
+				fflush(stdin);
+				gets(codigoVuelo);
+
+				while(strlen(codigoVuelo) >= 10)
+				{
+					printf("Codigo del vuelo demasiado largo. Reingrese codigo \n");
+					fflush(stdin);
+					gets(codigoVuelo);
+				}
+				strcpy(newPassenger->codigoVuelo, codigoVuelo);
+
+				printf("Ingrese la clase del aciento (1(prime)/2(media)/3(turista))): \n");
+				fflush(stdin);
+				scanf("%d", &tipo);
+
+				while(tipo > 3 || tipo < 0)
+				{
+					printf("clase inexistente (1(prime)/2(media)/3(turista))):\n ");
+					fflush(stdin);
+					scanf("%d", &tipo);
+				}
+				newPassenger->tipoPasajero = tipo;
+
+			    newPassenger->id = id + 1;;
+			}
+		if(newPassenger != NULL)
+		{
+		  ll_add(pArrayListPassenger, newPassenger);
+		}
+
 	}
-	else
-	{
-		printf("Ingrese el nombre del pasajero:\n ");
-		fflush(stdin);
-		gets(nombre);
 
-		while(strlen(nombre) >= 51)
-	    {
-           	 printf("Nombre demasiado largo. Reingrese nombre:\n ");
-           	 fflush(stdin);
-             gets(nombre);
-	    }
 
-		printf("Ingrese el apellido del pasajero:\n ");
-		fflush(stdin);
-		gets(apellido);
-
-		 while(strlen(apellido) >= 51)
-		 {
-			 printf("Apellido demasiado largo. Reingrese Apellido:\n ");
-			 fflush(stdin);
-			 gets(apellido);
-		 }
-
-		printf("Ingrese precio:\n ");
-		fflush(stdin);
-		scanf("%f", &precio);
-
-		printf("Ingrese codigo del vuelo:\n ");
-		fflush(stdin);
-		gets(codigoVuelo);
-
-		 while(strlen(codigoVuelo) >= 5)
-		 {
-			 printf("Codigo del vuelo demasiado largo. Reingrese codigo \n");
-			 fflush(stdin);
-			 gets(codigoVuelo);
-		 }
-
-	   printf("Ingrese la clase del aciento (1(Executiveclas)/2(FirstClas)/3(EconomyClas))): \n");
-	   fflush(stdin);
-	   scanf("%d", &tipoPasajero);
-
-	   while(tipoPasajero > 3 || tipoPasajero < 0)
-	   {
-			printf("clase inexistente (1(Executiveclas)/2(FirstClas)/3(EconomyClas))):\n ");
-			fflush(stdin);
-			scanf("%d", &tipoPasajero);
-	   }
-
-	}
-	newPassenger = newPassenger_Parametros(nombre, apellido,  precio, tipoPasajero, codigoVuelo);
-	if(newPassenger == NULL)
-	{
-		printf("No se pudo conseguir memoria o campos invalios\n");
-		exit(1);
-	}
-	else
-	{
-		ll_add(pArrayListPassenger, newPassenger);
-		todoOk = 1;
-	}
     return todoOk;
 }
 
@@ -149,34 +158,9 @@ int controller_addPassenger(LinkedList* pArrayListPassenger)
 int controller_editPassenger(LinkedList* pArrayListPassenger)
 {
 	int todoOk = 0;
-	int id;
-	char nombre[50];
-	int tipoPasajero;
-	Passenger* aux = NULL;
 	if(pArrayListPassenger != NULL)
 	{
-		printf("Ingrese id del usuario que quiera cambiar los parametros:\n");
-		scanf("%d", &id);
-		for(int i=0; i<ll_len(pArrayListPassenger);i++)
-		{
-			aux = (Passenger*) ll_get(pArrayListPassenger, i);
-			if(id == aux->id )
-			{
 
-				printf("ingrese nuevo nombre:\n");
-				fflush(stdin);
-				gets(nombre);
-				printf("ingrese nuevo clase:\n");
-				scanf("%d", &tipoPasajero);
-				if(Passenger_newParametros(nombre, tipoPasajero))
-				{
-					strcpy(aux->nombre, nombre);
-					aux->tipoPasajero = tipoPasajero;
-					todoOk = 1;
-					exit(1);
-				}
-			}
-		}
 	}
 	return todoOk;
 }
@@ -191,24 +175,12 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 int controller_removePassenger(LinkedList* pArrayListPassenger)
 {
 	int todoOk = 0;
-	int id;
-	Passenger* aux = NULL;
+	int idAux;
 	if(pArrayListPassenger != NULL)
 	{
-		printf("ingrese el id del pasajero que quiere eliminar: \n");
-		scanf("%d", &id);
-		for(int i=0; i<ll_len(pArrayListPassenger);i++)
-		{
-			aux = (Passenger*) ll_get(pArrayListPassenger, i);
-			if(id == aux->id )
-			{
-				ll_remove(pArrayListPassenger, i);
-				printf("Pasajeros eliminado con exito");
-				todoOk = 1;
-				exit(1);
-			}
-
-		}
+		printf("Ingrese nuevo ID del pasajero que quiere eliminar:\n");
+		scanf("%d", &idAux);
+		ll_remove(pArrayListPassenger, ll_get(pArrayListPassenger, idAux));
 	}
     return todoOk;
 }
@@ -265,17 +237,7 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 {
-	FILE* f = fopen("path", "a");
-	if(f == NULL && pArrayListPassenger == NULL)
-	{
-		printf("No se pudo abrir el archivo\n");
-		exit(1);
-	}
-	else
-	{
-		parser_PassengerFromText(f, pArrayListPassenger);
-		fclose(f);
-	}
+
     return 1;
 }
 
@@ -288,17 +250,6 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 {
-	FILE* f = fopen("path", "ab");
-	if(f == NULL && pArrayListPassenger == NULL)
-	{
-		printf("No se pudo abrir el archivo\n");
-		exit(1);
-	}
-	else
-	{
-		parser_PassengerFromBinary(f, pArrayListPassenger);
-		fclose(f);
-	}
 	return 1;
 }
 

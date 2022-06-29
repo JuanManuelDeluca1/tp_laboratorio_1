@@ -12,13 +12,21 @@
  */
 int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 {
+	int id;
+	char nombre[200];
+	char apellido[50];
+	float precio;
+	int tipoPasajero;
+	char codigoVuelo[4];
 	Passenger* p = NULL;
 	if(pArrayListPassenger != NULL)
 	{
-	  while( !feof(pFile))
-	  {
-		  fscanf("%d, [^,],[^,],%.2f,%d,[^,]\n", p->id, p->nombre, p->apellido, p->precio, p->tipoPasajero, p->codigoVuelo);
-	  }
+		fscanf(pFile, "%s", nombre);
+	   while( !feof(pFile))
+	   {
+		   fscanf(pFile, "%d, [^,],[^,],%.2f,%d,[^,]\n", &id, nombre, apellido, &precio, &tipoPasajero, codigoVuelo);
+		   Passenger_Parametro(id, nombre, apellido,precio, tipoPasajero, codigoVuelo);
+	   }
 	}
     return 1;
 }
@@ -31,7 +39,21 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
  */
 int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 {
-	Passenger auxPassenger;
-	fread(&auxPassenger, sizeof(Passenger), 1 ,pFile);
-    return 1;
+	int id;
+		char nombre[200];
+		char apellido[50];
+		float precio;
+		int tipoPasajero;
+		char codigoVuelo[4];
+		Passenger* p = NULL;
+		if(pArrayListPassenger != NULL)
+		{
+			fscanf(pFile, "%s", nombre);
+		   while( !feof(pFile))
+		   {
+			   fscanf(pFile, "%d, [^,],[^,],%.2f,%d,[^,]\n", &id, nombre, apellido, &precio, &tipoPasajero, codigoVuelo);
+			   Passenger_Parametro(id, nombre, apellido,precio, tipoPasajero, codigoVuelo);
+		   }
+	   }
+	   return 1;
 }

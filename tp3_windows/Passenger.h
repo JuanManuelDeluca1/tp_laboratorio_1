@@ -21,8 +21,7 @@ typedef struct
 
 Passenger* Passenger_new();
 void passenger_Destroy(Passenger* p);
-Passenger* newPassenger_Parametros(char* nombre, char* apellido, float precio, int tipo, char* codigoVuelo);
-Passenger* Passenger_newParametros(char* nombreStr,int tipoPasajeroStr);
+Passenger* Passenger_newParametros(char* idStr,char* nombreStr,char* tipoPasajeroStr);
 void Passenger_delete();
 
 int Passenger_setId(Passenger* this,int id);
@@ -43,7 +42,8 @@ int Passenger_getTipoPasajero(Passenger* this,int* tipoPasajero);
 int Passenger_setPrecio(Passenger* this,float precio);
 int Passenger_getPrecio(Passenger* this,float* precio);
 
-int mostrarPassenger(Passenger* e);
+void mostrarPassenger(Passenger* e);
+void mostrarPassengers(LinkedList* list);
 int sortPassengerName(void* a, void* b);
 
 #endif /* PASSENGER_H_ */

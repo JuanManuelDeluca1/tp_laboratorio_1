@@ -8,12 +8,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
+#include "LinkedList.h"
 #include "Passenger.h"
 
 Passenger* Passenger_new()
 {
-	Passenger* newPassenger = (Passenger*)calloc(1,sizeof(newPassenger));
+	Passenger* newPassenger = (Passenger*)malloc(sizeof(newPassenger));
+
 	return newPassenger;
 }
 
@@ -21,38 +22,32 @@ void passenger_Destroy(Passenger* p)
 {
 	free(p);
 }
-
-Passenger* newPassenger_Parametros(char* nombre, char* apellido, float precio, int tipo, char* codigoVuelo)
+Passenger* Passenger_Parametro(int id, char* nombre, char* apellido,float precio, int* tipo, char* codigoVuelo)
 {
 	Passenger* newPassenger = Passenger_new();
-	if(newPassenger != NULL)
-	{
-		if(!(Passenger_setNombre(newPassenger, nombre)&&
-			 Passenger_setApellido(newPassenger, apellido)&&
-			 Passenger_setCodigoVuelo(newPassenger, codigoVuelo)&&
-			 Passenger_setTipoPasajero(newPassenger, tipo)&&
-			 Passenger_setPrecio(newPassenger, precio)))
-		{
-			passenger_Destroy(newPassenger);
-			newPassenger = NULL;
-		}
-	}
-	return newPassenger;
+			if(newPassenger != NULL)
+			{
+				if(!(Passenger_setNombre(newPassenger, nombre) &&
+					Passenger_setApellido(newPassenger, apellido)&&
+					Passenger_setCodigoVuelo(newPassenger, codigoVuelo)&&
+					 Passenger_setTipoPasajero(newPassenger, tipo)&&
+					 Passenger_setPrecio(newPassenger, precio)))
+				{
+					Pelicula_Destroy(newPassenger);
+					newPassenger = NULL;
+				}
+			}
+			return newPassenger;
+
 }
 
-Passenger* Passenger_newParametros(char* nombreStr,int tipoPasajeroStr)
+Passenger* Passenger_newParametros(char* idStr,char* nombreStr,char* tipoPasajeroStr)
 {
 	Passenger* newPassenger = Passenger_new();
 	if(newPassenger != NULL)
 	{
-		if(!(Passenger_setNombre(newPassenger, nombreStr)&&
-			 Passenger_setTipoPasajero(newPassenger, tipoPasajeroStr)))
-			{
-				passenger_Destroy(newPassenger);
-				newPassenger = NULL;
-			}
-		}
-		return newPassenger;
+	}
+	return newPassenger;
 }
 
 int Passenger_setNombre(Passenger* this,char* nombre)
@@ -164,16 +159,29 @@ int Passenger_getPrecio(Passenger* this,float* precio)
 	return todoOk;
 }
 
-int mostrarPassenger(Passenger* e)
+void mostrarPassenger(Passenger* e)
 {
-    int todoOk = 0;
     if(e != NULL)
     {
-        printf("%d %s %s %.2f %d &s\n", e->id, e->nombre, e->apellido, e->precio, e->tipoPasajero, e->codigoVuelo);
-        todoOk = 1;
+    	printf("%d %s %s %.2f %d &s\n", e->id, e->nombre, e->apellido, e->precio, e->tipoPasajero, e->codigoVuelo);
     }
-    return todoOk;
 }
+
+void mostrarPassengers(LinkedList* list)
+{
+	int tam;
+	if(list != NULL)
+	{
+		tam = ll_len(list);
+		printf("Id  Titulo  Genero  Reiting");
+		for(int i = 0; i < tam; i++)
+		{
+			mostrarPassenger((Passenger*)ll_get(list, i));
+		}
+	}
+
+}
+
 
 int sortPassengerName(void* a, void* b)
 {
